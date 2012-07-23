@@ -1,5 +1,5 @@
 def connect_db
-  dbconfig = YAML::load(File.open('database.yml'))
-  ActiveRecord::Base.establish_connection(dbconfig)
+  conn = YAML::load(File.open('database.yml'))
+  ActiveRecord::Base.establish_connection(conn)
   ActiveRecord::Base.logger = Logger.new(STDERR)
 end
