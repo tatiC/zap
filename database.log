@@ -1,0 +1,20 @@
+D, [2012-07-23T00:12:44.847690 #48301] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+D, [2012-07-23T00:12:44.849317 #48301] DEBUG -- :   [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+D, [2012-07-23T00:12:44.849524 #48301] DEBUG -- :   [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+D, [2012-07-23T00:12:44.850702 #48301] DEBUG -- :   [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+D, [2012-07-23T00:12:44.852642 #48301] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+I, [2012-07-23T00:12:44.852717 #48301]  INFO -- : Migrating to CreateLinks (1)
+D, [2012-07-23T00:12:44.852884 #48301] DEBUG -- :   [1m[35m (0.0ms)[0m  begin transaction
+D, [2012-07-23T00:12:44.889571 #48301] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mCREATE TABLE "links" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "link" varchar(255), "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+D, [2012-07-23T00:12:44.894001 #48301] DEBUG -- :   [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('1')
+D, [2012-07-23T00:12:44.899875 #48301] DEBUG -- :   [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+I, [2012-07-23T00:12:44.899969 #48301]  INFO -- : Migrating to CreateTags (2)
+D, [2012-07-23T00:12:44.900204 #48301] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2012-07-23T00:12:44.943795 #48301] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+D, [2012-07-23T00:12:44.944278 #48301] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('2')
+D, [2012-07-23T00:12:44.964200 #48301] DEBUG -- :   [1m[36m (19.7ms)[0m  [1mcommit transaction[0m
+I, [2012-07-23T00:12:44.964290 #48301]  INFO -- : Migrating to CreateTaggings (3)
+D, [2012-07-23T00:12:44.964512 #48301] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2012-07-23T00:12:45.024473 #48301] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "link_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+D, [2012-07-23T00:12:45.025164 #48301] DEBUG -- :   [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('3')
+D, [2012-07-23T00:12:45.027245 #48301] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mcommit transaction[0m

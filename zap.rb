@@ -1,11 +1,21 @@
-require 'rubygems'
-require 'active_record'
-require 'yaml'
+# encoding: utf-8
 
-dbconfig = YAML::load(File.open('database.yml'))
-ActiveRecord::Base.establish_connection(dbconfig)
+puts "Início require: #{Time.now}"
+require '/Users/tatic/Dropbox/my_projects/github/zap/dependencies.rb'
+puts "Fim require: #{Time.now}"
 
-class User < ActiveRecord::Base
+def clear_screen
+  system("c")
 end
 
-puts User.count
+clear_screen()
+connect_db()
+
+option = 0
+
+while option != "S" do 
+  show_menu()
+  puts "O que você quer fazer?"
+  option = gets().chomp
+  process_option(option)
+end
